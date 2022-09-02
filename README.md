@@ -31,7 +31,23 @@ Verify if the correct permissions are set (optional)
 
 `adb shell stat /vendor/overlay/treble-overlay-bromite-webview.apk | grep "0644"`
 
-After the file has been pushed, reboot the device
+Mount the system as read-write
+
+`adb shell mount -o rw,remount /`
+
+Copy the OTA survival script to the appropriate location
+
+`adb push 99-bromite-webview.sh /system/addon.d`
+
+Make the script executable
+
+`adb shell chmod 755 /system/addon.d/99-bromite-webview.sh`
+
+Verify if the correct permissions are set (optional)
+
+`adb shell stat /system/addon.d/99-bromite-webview.sh | grep "0755"`
+
+After all the files have been copied, reboot the device
 
 `adb reboot`
 
@@ -56,10 +72,6 @@ To ensure that the package is installed for both profiles install the package vi
 `adb install <package-name>.apk`
 
 ### Alternative location (only for Android 11+)
-
-Mount the system as read-write
-
-`adb shell mount -o rw,remount /`
 
 Copy the required package to the overlay folder
 
