@@ -6,7 +6,7 @@ This package makes use of a [resource overlay](https://source.android.com/docs/c
 
 ## Compatibility
 
-Although this method should work on any other Android versions, **currently testing has only been done on LineageOS 19.1 for MicroG based on Android 12.1**.
+Although this method should work on all Android versions that support Bromite and it's WebView, **currently testing has only been done on LineageOS 19.1 for MicroG based on Android 12.1**.
 
 ## Prerequisites
 
