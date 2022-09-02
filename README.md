@@ -71,7 +71,7 @@ To ensure that the package is installed for both profiles install the package vi
 
 `adb install <package-name>.apk`
 
-### Alternative location
+### Alternative Location
 
 On newer Android versions the overlay package can also be installed to the system partition.
 
