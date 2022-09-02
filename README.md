@@ -59,27 +59,31 @@ If everything is ok, you should see the following message:
 
 `org.bromite.webview is NOT installed.`
 
-[Download the latest Bromite SystemWebView release](https://www.bromite.org/system_web_view) and install it as you would a regular app. 
+[Download the latest Bromite SystemWebView release](https://www.bromite.org/system_web_view) and install it as you would a regular app.
 
 Lastly, navigate to *Settings > Developer options > WebView implementation* and select the appropriate package.
 
 ### Work Profile
 
-Be aware that if you have a work profile enabled you also need to install the package from the work profile a second time (usually via de Work Files app), otherwise work apps that rely on the WebView component will refuse to work or crash altogether. 
+Be aware that if you have a work profile enabled you also need to install the package from the work profile a second time (usually via de Work Files app), otherwise work apps that rely on the WebView component will refuse to work or crash altogether.
 
 To ensure that the package is installed for both profiles install the package via ADB.
 
 `adb install <package-name>.apk`
 
-### Alternative location (only for Android 11+)
+### Alternative location
 
-Copy the required package to the overlay folder
+On newer Android versions the overlay package can also be installed to the system partition.
 
 `adb push treble-overlay-bromite-webview.apk /system/product/overlay`
 
 Verify if the correct permissions are set (optional)
 
 `adb shell stat /system/product/overlay/treble-overlay-bromite-webview.apk | grep "0644"`
+
+Installing the overlay to the system partition will also list it as an installed package when running the following command:
+
+`adb shell pm list packages | grep com.arovlad.bromite.webview.overlay`
 
 ## Building
 
