@@ -19,8 +19,6 @@ Restart ADB with root privileges
 
 `adb root`
 
-### Default location (any Android version)
-
 Mount the vendor folder as read-write
 
 `adb shell mount -o rw,remount /vendor`
@@ -32,20 +30,6 @@ Copy the required package to the overlay folder
 Verify if the correct permissions are set (optional)
 
 `adb shell stat /vendor/overlay/treble-overlay-bromite-webview.apk | grep "0644"`
-
-### Alternative location (only for Android 11+)
-
-Mount the system as read-write
-
-`adb shell mount -o rw,remount /`
-
-Copy the required package to the overlay folder
-
-`adb push treble-overlay-bromite-webview.apk /system/product/overlay`
-
-Verify if the correct permissions are set (optional)
-
-`adb shell stat /system/product/overlay/treble-overlay-bromite-webview.apk | grep "0644"`
 
 After the file has been pushed, reboot the device
 
@@ -70,6 +54,20 @@ Be aware that if you have a work profile enabled you also need to install the pa
 To ensure that the package is installed for both profiles install the package via ADB.
 
 `adb install <package-name>.apk`
+
+### Alternative location (only for Android 11+)
+
+Mount the system as read-write
+
+`adb shell mount -o rw,remount /`
+
+Copy the required package to the overlay folder
+
+`adb push treble-overlay-bromite-webview.apk /system/product/overlay`
+
+Verify if the correct permissions are set (optional)
+
+`adb shell stat /system/product/overlay/treble-overlay-bromite-webview.apk | grep "0644"`
 
 ## Building
 
