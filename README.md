@@ -4,14 +4,12 @@ In order for Bromite SystemWebView to be [installed](https://github.com/bromite/
 
 This package makes use of a [resource overlay](https://source.android.com/docs/core/architecture/rros) to replace the list of hardcoded webviews with one that also includes the Bromite WebView. I personally find this method more straightforward and elegant, as it does not require root access nor the tedious process of installing Magisk modules or patching the system framework itself manually — if anything breaks the package can simply be removed. Moreover, the WebView itself does not need to be installed as a system app and has no potential risk of breaking SafetyNet.
 
-## Compatibility
-
-Although this method should work on all Android versions that support Bromite and it's WebView, **currently testing has only been done on LineageOS 19.1 for MicroG based on Android 12.1**.
-
 ## Prerequisites
 
 * `adb`
 * Support for rooted debugging (enabled via *Settings > Developer options > Rooted debugging*) or a recovery that supports ADB
+
+Although this method should work on all Android versions that support Bromite and it's WebView, **currently testing has only been done on LineageOS 19.1 for MicroG based on Android 12.1**.
 
 ## Installation
 
