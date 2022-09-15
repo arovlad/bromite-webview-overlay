@@ -92,7 +92,7 @@ The following dependencies are required:
 * `aapt`
 * `apktool`
 
-Run the build script
+To build the overlay, simply run the build script
 
 `./build.sh`
 
