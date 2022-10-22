@@ -14,8 +14,8 @@
 
 list_files() {
 cat <<EOF
-/vendor/overlay/treble-overlay-bromite-webview.apk
-/system/product/overlay/treble-overlay-bromite-webview.apk
+vendor/overlay/treble-overlay-bromite-webview.apk
+product/overlay/treble-overlay-bromite-webview.apk
 EOF
 }
 
