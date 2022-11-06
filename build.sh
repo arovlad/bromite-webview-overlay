@@ -18,5 +18,5 @@ mkdir -p build/.temp/system/addon.d
 cp 99-bromite-webview.sh build/.temp/system/addon.d
 mkdir -p build/.temp/vendor/overlay
 cp build/treble-overlay-bromite-webview.apk build/.temp/vendor/overlay
-zip -r build/BromiteSystemWebViewOverlay.zip build/.temp &> /dev/null
+( cd build/.temp && zip -r ../BromiteSystemWebViewOverlay.zip . ) &> /dev/null
 rm -r build/.temp
