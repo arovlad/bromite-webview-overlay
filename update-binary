@@ -1,0 +1,36 @@
+#!/sbin/sh
+
+# Extract the package to a temporary location
+unzip -oq ${3} -d "/tmp/BromiteWebViewInstaller"
+
+# Create faux mountpoints
+mkdir /picodroid_system
+mkdir /picodroid_vendor
+
+# Mount the neccesary partitions
+mount -o rw /dev/block/by-name/system /picodroid_system
+mount -o rw /dev/block/by-name/vendor /picodroid_vendor
+
+# Copy the overlay to the appropriate location
+cp /tmp/BromiteWebViewInstaller/vendor/overlay/treble-overlay-bromite-webview.apk /picodroid_vendor/overlay
+
+# Copy the OTA survival script to the appropriate location
+cp /tmp/BromiteWebViewInstaller/system/addon.d/99-bromite-webview.sh /picodroid_system/system/addon.d
+
+# Make the script executable
+chmod 755 /picodroid_system/system/addon.d/99-bromite-webview.sh
+
+# Unmount the previously mounted partitions
+umount -l /picodroid_system
+umount -l /picodroid_vendor
+
+# Delete de faux mountpoints
+rmdir /picodroid_system
+rmdir /picodroid_vendor
+
+# Clean up the installation files
+rm -rf /tmp/BromiteWebViewInstaller
+
+# Inform the user that the update has been successful
+echo -e "ui_print Update successfully installed!" >> /proc/self/fd/${2}
+echo -e "ui_print You can now install Bromite SystemWebView as a regular app!" >> /proc/self/fd/${2}

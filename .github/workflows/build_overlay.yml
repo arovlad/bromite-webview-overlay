@@ -3,9 +3,9 @@ name: Build WebView Overlay
 on:
   workflow_dispatch:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "development" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "development" ]
 
 jobs:
   build:
@@ -23,5 +23,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: Overlay
-        path: build/treble-overlay-bromite-webview.apk
+        name: Flashable ZIP
+        path: build/BromiteSystemWebViewOverlay.zip
