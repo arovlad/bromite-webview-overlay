@@ -4,12 +4,14 @@ In order for Bromite SystemWebView to be [installed](https://github.com/bromite/
 
 This package makes use of a [resource overlay](https://source.android.com/docs/core/architecture/rros) to replace the list of hardcoded webviews with one that also includes the Bromite WebView. I personally find this method more straightforward and elegant, as it does not require root access nor the tedious process of installing Magisk modules or patching the system framework itself manually — if anything breaks the package can simply be removed. Moreover, the WebView itself does not need to be installed as a system app and has no potential risk of breaking SafetyNet.
 
+![The WebView implementation settings with the Bromite SystemWebView Overlay installed](screenshot.png)
+
+Although this method should work on all Android versions that support Bromite and it's WebView, **currently testing has only been done on LineageOS 19.1 for MicroG based on Android 12.1**.
+
 ## Prerequisites
 
 * Treble-enabled ROM ([How to check?](https://github.com/phhusson/treble_experimentations/wiki/Frequently-Asked-Questions-%28FAQ%29#how-can-i-check-if-my-device-is-treble-enabled))
 * Custom recovery **(preferred)**, support for rooted debugging (enabled via *Settings > Developer options > Rooted debugging*) or root access
-
-Although this method should work on all Android versions that support Bromite and it's WebView, **currently testing has only been done on LineageOS 19.1 for MicroG based on Android 12.1**.
 
 ## Installation
 
@@ -27,8 +29,7 @@ Although this method should work on all Android versions that support Bromite an
 
 Be aware that if you have a work profile enabled you also need to install the package from the work profile a second time (usually via de Work Files app), otherwise work apps that rely on the WebView component will refuse to work or crash altogether.
 
-To ensure that the package is installed for both profiles install the package via ADB.
-
+To ensure that the package is installed for both profiles install the package via adb:  
 `adb install <package-name>.apk`
 
 ## Building
@@ -38,7 +39,6 @@ The following dependencies are required:
 * `git`
 * `xmlstarlet`
 * `apktool`
-* `aapt` (included)
 * `zip`
 
 To build the overlay and the flashable package, simply run the build script:
