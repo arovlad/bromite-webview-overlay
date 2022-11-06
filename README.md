@@ -13,14 +13,14 @@ Although this method should work on all Android versions that support Bromite an
 
 ## Installation
 
-* Reboot device into recovery mode, either from the power menu, via a device-specific key combination or by typing the following command if the device has USB debugging enabled:
+* Reboot device into recovery mode, either from the power menu, via a device-specific key combination or by typing the following command if the device has USB debugging enabled:  
 `adb reboot recovery`
-* Select *Apply update* then *Apply from ADB* and install the package using the following command:
+* Select *Apply update* then *Apply from ADB* and install the package using the following command:  
 `adb sideload BromiteSystemWebViewOverlay.zip`
 * If the installer complains about signature verification, install anyway by selecting **Yes**.
 * Reboot the device.
 * [Download the latest Bromite SystemWebView release](https://www.bromite.org/system_web_view) and install it as you would a regular app.
-* Lastly, navigate to *Settings > Developer options > WebView implementation* and select the appropriate package or run the following command:
+* Lastly, navigate to *Settings > Developer options > WebView implementation* and select the appropriate package or run the following command:  
 `adb shell cmd webviewupdate set-webview-implementation org.bromite.webview`
 
 ### Work Profile
