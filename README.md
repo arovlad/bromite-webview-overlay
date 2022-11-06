@@ -6,60 +6,22 @@ This package makes use of a [resource overlay](https://source.android.com/docs/c
 
 ## Prerequisites
 
-* `adb`
-* Support for rooted debugging (enabled via *Settings > Developer options > Rooted debugging*) or a recovery that supports ADB
+* Treble-enabled ROM ([How to check?](https://github.com/phhusson/treble_experimentations/wiki/Frequently-Asked-Questions-%28FAQ%29#how-can-i-check-if-my-device-is-treble-enabled))
+* Custom recovery **(preferred)**, support for rooted debugging (enabled via *Settings > Developer options > Rooted debugging*) or root access
 
 Although this method should work on all Android versions that support Bromite and it's WebView, **currently testing has only been done on LineageOS 19.1 for MicroG based on Android 12.1**.
 
 ## Installation
 
-Restart ADB with root privileges
-
-`adb root`
-
-Mount the vendor folder as read-write
-
-`adb shell mount -o rw,remount /vendor`
-
-Copy the required package to the overlay folder
-
-`adb push treble-overlay-bromite-webview.apk /vendor/overlay`
-
-Verify if the correct permissions are set (optional)
-
-`adb shell stat /vendor/overlay/treble-overlay-bromite-webview.apk | grep "0644"`
-
-Mount the system as read-write
-
-`adb shell mount -o rw,remount /`
-
-Copy the OTA survival script to the appropriate location
-
-`adb push 99-bromite-webview.sh /system/addon.d`
-
-Make the script executable
-
-`adb shell chmod 755 /system/addon.d/99-bromite-webview.sh`
-
-Verify if the correct permissions are set (optional)
-
-`adb shell stat /system/addon.d/99-bromite-webview.sh | grep "0755"`
-
-After all the files have been copied, reboot the device
-
-`adb reboot`
-
-After rebooting you can verify if the overlay has been successfully installed (optional)
-
-`adb shell dumpsys webviewupdate`
-
-If everything is ok, you should see the following message:
-
-`org.bromite.webview is NOT installed.`
-
-[Download the latest Bromite SystemWebView release](https://www.bromite.org/system_web_view) and install it as you would a regular app.
-
-Lastly, navigate to *Settings > Developer options > WebView implementation* and select the appropriate package.
+* Reboot device into recovery mode, either from the power menu, via a device-specific key combination or by typing the following command if the device has USB debugging enabled:
+`adb reboot recovery`
+* Select *Apply update* then *Apply from ADB* and install the package using the following command:
+`adb sideload BromiteSystemWebViewOverlay.zip`
+* If the installer complains about signature verification, install anyway by selecting **Yes**.
+* Reboot the device.
+* [Download the latest Bromite SystemWebView release](https://www.bromite.org/system_web_view) and install it as you would a regular app.
+* Lastly, navigate to *Settings > Developer options > WebView implementation* and select the appropriate package or run the following command:
+`adb shell cmd webviewupdate set-webview-implementation org.bromite.webview`
 
 ### Work Profile
 
@@ -69,31 +31,17 @@ To ensure that the package is installed for both profiles install the package vi
 
 `adb install <package-name>.apk`
 
-### Alternative Location
-
-On newer Android versions the overlay package can also be installed to the system partition.
-
-`adb push treble-overlay-bromite-webview.apk /system/product/overlay`
-
-Verify if the correct permissions are set (optional)
-
-`adb shell stat /system/product/overlay/treble-overlay-bromite-webview.apk | grep "0644"`
-
-Installing the overlay to the system partition will also list it as an installed package when running the following command:
-
-`adb shell pm list packages | grep com.arovlad.bromite.webview.overlay`
-
 ## Building
 
 The following dependencies are required:
 
 * `git`
 * `xmlstarlet`
-* `aapt`
 * `apktool`
+* `aapt` (included)
+* `zip`
 
-To build the overlay, simply run the build script
-
+To build the overlay and the flashable package, simply run the build script:
 `./build.sh`
 
 Alternatively, you can read a more in-depth guide [here](https://github.com/phhusson/treble_experimentations/wiki/How-to-create-an-overlay%3F).

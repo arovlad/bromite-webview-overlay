@@ -23,5 +23,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: Overlay
-        path: build/treble-overlay-bromite-webview.apk
+        name: Flashable ZIP
+        path: build/BromiteSystemWebViewOverlay.zip
