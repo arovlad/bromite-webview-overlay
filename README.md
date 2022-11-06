@@ -39,7 +39,6 @@ The following dependencies are required:
 * `git`
 * `xmlstarlet`
 * `apktool`
-* `aapt` (included)
 * `zip`
 
 To build the overlay and the flashable package, simply run the build script:
