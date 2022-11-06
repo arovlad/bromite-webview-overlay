@@ -4,6 +4,8 @@ In order for Bromite SystemWebView to be [installed](https://github.com/bromite/
 
 This package makes use of a [resource overlay](https://source.android.com/docs/core/architecture/rros) to replace the list of hardcoded webviews with one that also includes the Bromite WebView. I personally find this method more straightforward and elegant, as it does not require root access nor the tedious process of installing Magisk modules or patching the system framework itself manually — if anything breaks the package can simply be removed. Moreover, the WebView itself does not need to be installed as a system app and has no potential risk of breaking SafetyNet.
 
+![The WebView implementation settings with the Bromite SystemWebView Overlay installed](screenshot.png)
+
 ## Prerequisites
 
 * Treble-enabled ROM ([How to check?](https://github.com/phhusson/treble_experimentations/wiki/Frequently-Asked-Questions-%28FAQ%29#how-can-i-check-if-my-device-is-treble-enabled))
