@@ -1,5 +1,8 @@
 #!/sbin/sh
 
+# Exit immediately if a command fails
+set -e
+
 # Extract the package to a temporary location
 unzip -oq ${3} -d "/tmp/BromiteWebViewInstaller"
 
