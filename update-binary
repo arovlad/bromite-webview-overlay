@@ -1,5 +1,11 @@
 #!/sbin/sh
 
+# Exit immediately if the device is not Treble-enabled
+if [ ! $(getprop ro.treble.enabled) ]
+    then echo -e "ui_print Your device is not Treble-enabled!" >> /proc/self/fd/${2}
+    exit 1
+fi
+
 # Exit immediately if a command fails
 set -e
 
