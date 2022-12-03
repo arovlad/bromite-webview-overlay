@@ -1,0 +1,6 @@
+id=bromite-system-webview
+name=Bromite System WebView Overlay
+version=v0.3
+versionCode=00003
+author=arovlad
+description=Enable the use of Bromite as the system WebView
