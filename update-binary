@@ -24,8 +24,8 @@ mount -o rw $(readlink -f $(cd /dev && find /dev/block -type l -name vendor* | h
 cp /tmp/BromiteWebViewInstaller/vendor/overlay/treble-overlay-bromite-webview.apk /picodroid_vendor/overlay
 
 # Copy the OTA survival script to the appropriate location
-if [ -d /picodroid_system/system/addon.d ] then
-    cp /tmp/BromiteWebViewInstaller/system/addon.d/99-bromite-webview.sh /picodroid_system/system/addon.d
+if [ -d /picodroid_system/system/addon.d ]
+    then cp /tmp/BromiteWebViewInstaller/system/addon.d/99-bromite-webview.sh /picodroid_system/system/addon.d
 fi
 
 # Make the script executable
