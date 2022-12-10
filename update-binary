@@ -17,8 +17,8 @@ mkdir /picodroid_system
 mkdir /picodroid_vendor
 
 # Mount the neccesary partitions
-mount -o rw $(readlink -f $(cd /dev && find /dev/block -type l -name system* | head -n 1 )) /picodroid_system
-mount -o rw $(readlink -f $(cd /dev && find /dev/block -type l -name vendor* | head -n 1 )) /picodroid_vendor
+mount -o rw $(readlink -f $(cd /dev && find /dev/block -type l -name system$(getprop ro.boot.slot_suffix) | head -n 1 )) /picodroid_system
+mount -o rw $(readlink -f $(cd /dev && find /dev/block -type l -name vendor$(getprop ro.boot.slot_suffix) | head -n 1 )) /picodroid_vendor
 
 # Copy the overlay to the appropriate location
 cp /tmp/BromiteWebViewInstaller/vendor/overlay/treble-overlay-bromite-webview.apk /picodroid_vendor/overlay
