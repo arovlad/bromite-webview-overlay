@@ -2,11 +2,9 @@
 
 In order for Bromite SystemWebView to be [installed](https://github.com/bromite/bromite/wiki/Installing-SystemWebView), it must be one of the supported webviews hardcoded in the framework package. Since ROMs typically don't include Bromite SystemWebView among them, the community has developed some methods that allow the framework to be patched in order to include it.
 
-This package makes use of a [resource overlay](https://source.android.com/docs/core/architecture/rros) to replace the list of hardcoded webviews with one that also includes the Bromite WebView. I personally find this method more straightforward and elegant, as it does not require the tedious process of patching the system framework itself manually — if anything breaks the package can simply be removed. Moreover, the WebView itself does not need to be installed as a system app and has no potential risk of breaking SafetyNet — e.g. you can install it directly from F-Droid.
+This package makes use of a [resource overlay](https://source.android.com/docs/core/architecture/rros) to replace the list of hardcoded webviews with one that also includes the Bromite WebView. This method is more straightforward and elegant, as it does not require a rooted device nor the tedious process of installing Magisk modules or patching the system framework itself manually — if anything breaks the package can simply be removed. Moreover, the WebView itself does not need to be installed as a system app and has no potential risk of breaking SafetyNet — e.g. you can install it directly from F-Droid.
 
-Our officially-endorsed and tested way for installing this overlay is [via recovery](#installation), which allows you to avoid rooting your main system e.g. with Magisk. (You still need to unlock your bootloader, and install a custom ROM that allows addons to be installed via recovery, which provides temporary root access to the addon installation script.)
-
-Some users have experienced issues with this installation process, so we also provide the overlay packaged as a [Magisk module](#magisk). It is included for convenience only, and undergoes less frequent testing, as I do not endorse Magisk nor personally use it.
+Some users have experienced issues with this installation process, so an overlay packaged as a [Magisk module](#magisk) is also provided. It is included for convenience only, and undergoes less frequent testing as the main developer does not endorse Magisk. The officially-endorsed and tested installation method still remains [installing via recovery](#installation).
 
 ![The WebView implementation settings with the Bromite SystemWebView Overlay installed](screenshot.png)
 
@@ -65,11 +63,11 @@ To ensure that the package is installed for both profiles install the package vi
 
 ### Magisk
 
-`BromiteSystemWebViewMagisk.zip` can be installed directly as a Magisk module. Simply `adb push` it to your device, then install it via the normal Magisk UI.
+`BromiteSystemWebViewMagisk.zip` can be installed directly as a Magisk module. Simply copy it on your device, then install it via the normal Magisk UI.
+
+Its main use case is for when you have Magisk already installed, where it works around an issue where some ROMs — in particular MicroG ROMs — do not have enough reserved partition space to install addons. This makes the previous installation options fail, sometimes in non-obvious ways. (Details in arovlad/bromite-webview-overlay#5 and lineageos4microg/docker-lineage-cicd#358)
 
 It performs steps similar to the above, i.e. installs `treble-overlay-bromite-webview.apk` into `/vendor/overlay`, but as a Magisk module. The overlay is performed dynamically by Magisk at boot time, instead of directly modifying the vendor partition (until the next system update overwrites these changes). The OTA survival script is therefore not needed, as Magisk modules are not overwritten by system updates.
-
-As mentioned earlier, this module is included for convenience only, and undergoes less frequent testing as the main developer does not endorse Magisk. Its main use case is for when you have Magisk already installed, where it works around an issue where some ROMs - in particular MicroG ROMs - do not have enough reserved partition space to install addons. This makes the previous installation options fail, sometimes in non-obvious ways. (Details in #5 and lineageos4microg/docker-lineage-cicd#358)
 
 ## Building
 
@@ -88,6 +86,3 @@ Alternatively, you can read a more in-depth guide [here](https://github.com/phhu
 ## Credits
 
 * [Pierre-Hugues Husson](https://github.com/phhusson) for the guide and toolkit
-
-
-
