@@ -60,6 +60,7 @@ To ensure that the package is installed for both profiles install the package vi
 `adb shell dumpsys webviewupdate`
 * If everything is ok, you should see the following message:  
 `org.bromite.webview is NOT installed.`
+* Install Bromite SystemWebView as outlined above.
 
 ### Magisk
 
