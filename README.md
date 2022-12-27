@@ -42,10 +42,10 @@ To ensure that the package is installed for both profiles install the package vi
 `adb root`
 * Mount the vendor folder as read-write:  
 `adb shell mount -o rw,remount /vendor`
-* Copy the required package to the overlay folder:  
-`adb push treble-overlay-bromite-webview.apk /vendor/overlay`
+* Copy the required package to either the vendor partition (`adb push treble-overlay-bromite-webview.apk /vendor/overlay`) or the system partition (`adb push treble-overlay-bromite-webview.apk /system/product/overlay`) depending on your Android version.
 * Verify if the correct permissions are set (optional):  
-`adb shell stat /vendor/overlay/treble-overlay-bromite-webview.apk | grep "0644"`
+`adb shell stat /vendor/overlay/treble-overlay-bromite-webview.apk | grep "0644"` (vendor partition)  
+`adb shell stat /system/product/overlay/treble-overlay-bromite-webview.apk | grep "0644"` (system partition)
 * Mount the system as read-write:  
 `adb shell mount -o rw,remount /`
 * Copy the OTA survival script to the appropriate location:  
@@ -60,6 +60,7 @@ To ensure that the package is installed for both profiles install the package vi
 `adb shell dumpsys webviewupdate`
 * If everything is ok, you should see the following message:  
 `org.bromite.webview is NOT installed.`
+* Install Bromite SystemWebView as outlined above.
 
 ### Magisk
 
