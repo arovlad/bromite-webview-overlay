@@ -1,6 +1,6 @@
 #!/sbin/sh
 #
-# ADDOND_VERSION=2
+# ADDOND_VERSION=3
 #
 # /system/addon.d/99-bromite-webview-overlay.sh
 # During an Android upgrade, this script backs up treble-overlay-bromite-webview.apk,
