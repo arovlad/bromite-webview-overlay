@@ -17,14 +17,14 @@ Although this method should work on all Android versions that support Bromite an
 
 ## Installation
 
-* Reboot device into recovery mode, either from the power menu, via a device-specific key combination or by typing the following command if the device has USB debugging enabled:  
+* Reboot device into recovery mode, either from the power menu, via a device-specific key combination or by typing the following command if the device has USB debugging enabled:
 `adb reboot recovery`
-* Select *Apply update* then *Apply from ADB* and install the package using the following command:  
+* Select *Apply update* then *Apply from ADB* and install the package using the following command:
 `adb sideload BromiteSystemWebViewOverlay.zip`
 * If the installer complains about signature verification, install anyway by selecting **Yes**.
 * Reboot the device.
 * [Download the latest Bromite SystemWebView release](https://www.bromite.org/system_web_view) and install it as you would a regular app.
-* Lastly, navigate to *Settings > Developer options > WebView implementation* and select the appropriate package or run the following command:  
+* Lastly, navigate to *Settings > Developer options > WebView implementation* and select the appropriate package or run the following command:
 `adb shell cmd webviewupdate set-webview-implementation org.bromite.webview`
 
 If the above method doesn't work, try the [manual installation](#manual-installation) below.
@@ -33,32 +33,32 @@ If the above method doesn't work, try the [manual installation](#manual-installa
 
 Be aware that if you have a work profile enabled you also need to install the package from the work profile a second time (usually via de Work Files app), otherwise work apps that rely on the WebView component will refuse to work or crash altogether.
 
-To ensure that the package is installed for both profiles install the package via adb:  
+To ensure that the package is installed for both profiles install the package via adb:
 `adb install <package-name>.apk`
 
 ### Manual installation
 
-* Restart ADB with root privileges:  
+* Restart ADB with root privileges:
 `adb root`
-* Mount the vendor folder as read-write:  
+* Mount the vendor folder as read-write:
 `adb shell mount -o rw,remount /vendor`
 * Copy the required package to either the vendor partition (`adb push treble-overlay-bromite-webview.apk /vendor/overlay`) or the system partition (`adb push treble-overlay-bromite-webview.apk /system/product/overlay`) depending on your Android version.
-* Verify if the correct permissions are set (optional):  
-`adb shell stat /vendor/overlay/treble-overlay-bromite-webview.apk | grep "0644"` (vendor partition)  
+* Verify if the correct permissions are set (optional):
+`adb shell stat /vendor/overlay/treble-overlay-bromite-webview.apk | grep "0644"` (vendor partition)
 `adb shell stat /system/product/overlay/treble-overlay-bromite-webview.apk | grep "0644"` (system partition)
-* Mount the system as read-write:  
+* Mount the system as read-write:
 `adb shell mount -o rw,remount /`
-* Copy the OTA survival script to the appropriate location:  
+* Copy the OTA survival script to the appropriate location:
 `adb push 99-bromite-webview.sh /system/addon.d`
-* Make the script executable:  
+* Make the script executable:
 `adb shell chmod 755 /system/addon.d/99-bromite-webview.sh`
-* Verify if the correct permissions are set (optional):  
+* Verify if the correct permissions are set (optional):
 `adb shell stat /system/addon.d/99-bromite-webview.sh | grep "0755"`
-* After all the files have been copied, reboot the device:  
+* After all the files have been copied, reboot the device:
 `adb reboot`
-* After rebooting you can verify if the overlay has been successfully installed (optional):  
+* After rebooting you can verify if the overlay has been successfully installed (optional):
 `adb shell dumpsys webviewupdate`
-* If everything is ok, you should see the following message:  
+* If everything is ok, you should see the following message:
 `org.bromite.webview is NOT installed.`
 * Install Bromite SystemWebView as outlined above.
 
@@ -78,6 +78,7 @@ The following dependencies are required:
 * `xmlstarlet`
 * `apktool`
 * `zip`
+* `java`
 
 To build the overlay and the flashable package, simply run the build script:
 `./build.sh`
