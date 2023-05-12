@@ -1,11 +1,5 @@
 #!/sbin/sh
 
-# Exit immediately if the device is not Treble-enabled
-if [ ! $(getprop ro.treble.enabled) ]
-    then echo -e "ui_print Your device is not Treble-enabled!" >> /proc/self/fd/${2}
-    exit 1
-fi
-
 # Exit immediately if a command fails
 set -e
 
@@ -14,14 +8,12 @@ unzip -oq ${3} -d "/tmp/BromiteWebViewInstaller"
 
 # Create faux mountpoints
 mkdir /picodroid_system
-mkdir /picodroid_vendor
 
 # Mount the neccesary partitions
 mount -o rw $(readlink -f $(cd /dev && find /dev/block -type l -name system$(getprop ro.boot.slot_suffix) | head -n 1 )) /picodroid_system
-mount -o rw $(readlink -f $(cd /dev && find /dev/block -type l -name vendor$(getprop ro.boot.slot_suffix) | head -n 1 )) /picodroid_vendor
 
 # Copy the overlay to the appropriate location
-cp /tmp/BromiteWebViewInstaller/vendor/overlay/treble-overlay-bromite-webview.apk /picodroid_vendor/overlay
+cp /tmp/BromiteWebViewInstaller/system/product/overlay/treble-overlay-bromite-webview.apk /picodroid_system/system/product/overlay
 
 # Copy the OTA survival script to the appropriate location
 if [ -d /picodroid_system/system/addon.d ]
@@ -33,11 +25,9 @@ chmod 755 /picodroid_system/system/addon.d/99-bromite-webview.sh
 
 # Unmount the previously mounted partitions
 umount -l /picodroid_system
-umount -l /picodroid_vendor
 
 # Delete de faux mountpoints
 rmdir /picodroid_system
-rmdir /picodroid_vendor
 
 # Clean up the installation files
 rm -rf /tmp/BromiteWebViewInstaller
