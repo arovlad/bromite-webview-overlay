@@ -26,7 +26,7 @@ chmod 755 /picodroid_system/system/addon.d/99-bromite-webview.sh
 # Unmount the previously mounted partitions
 umount -l /picodroid_system
 
-# Delete de faux mountpoints
+# Delete the faux mountpoints
 rmdir /picodroid_system
 
 # Clean up the installation files
