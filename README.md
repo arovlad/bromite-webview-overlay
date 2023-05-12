@@ -1,5 +1,7 @@
 # Bromite SystemWebView Overlay
 
+**As the Bromite project seems to be dormant and using an outdated WebView introduces several security issues, the new version also provides a way to install [Mulch SystemWebView](#mulch-systemwebview). The name of the package will remain the same.**
+
 In order for Bromite SystemWebView to be [installed](https://github.com/bromite/bromite/wiki/Installing-SystemWebView), it must be one of the supported webviews hardcoded in the framework package. Since ROMs typically don't include Bromite SystemWebView among them, the community has developed some methods that allow the framework to be patched in order to include it.
 
 This package makes use of a [resource overlay](https://source.android.com/docs/core/architecture/rros) to replace the list of hardcoded webviews with one that also includes the Bromite WebView. This method is more straightforward and elegant, as it does not require a rooted device nor the tedious process of installing Magisk modules or patching the system framework itself manually — if anything breaks the package can simply be removed. Moreover, the WebView itself does not need to be installed as a system app and has no potential risk of breaking SafetyNet — e.g. you can install it directly from F-Droid.
@@ -12,7 +14,6 @@ Although this method should work on all Android versions that support Bromite an
 
 ## Prerequisites
 
-* Treble-enabled ROM ([How to check?](https://github.com/phhusson/treble_experimentations/wiki/Frequently-Asked-Questions-%28FAQ%29#how-can-i-check-if-my-device-is-treble-enabled))
 * Custom recovery **(preferred)**, support for rooted debugging (enabled via *Settings > Developer options > Rooted debugging*) or root access
 
 ## Installation
@@ -28,6 +29,12 @@ Although this method should work on all Android versions that support Bromite an
 `adb shell cmd webviewupdate set-webview-implementation org.bromite.webview`
 
 If the above method doesn't work, try the [manual installation](#manual-installation) below.
+
+### Mulch SystemWebView
+
+For installing Mulch SystemWebView instead of Bromite SystemWebView, simply follow the steps above while downloading [the latest Mulch SystemWebView release](https://gitlab.com/divested-mobile/mulch/-/tree/master/prebuilt). The WebView can then be updated from F-Droid by adding [this repository](https://divestos.org/fdroid/official/).
+
+**Please be aware that by using Mulch SystemWebView you will be running proprietary/non-free code ([according to the website of the developer](https://divestos.org/pages/browsers#chromium-based)).**
 
 ### Work Profile
 
@@ -78,7 +85,6 @@ The following dependencies are required:
 * `xmlstarlet`
 * `apktool`
 * `zip`
-* `java`
 
 To build the overlay and the flashable package, simply run the build script:
 `./build.sh`
