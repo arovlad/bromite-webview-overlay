@@ -17,11 +17,11 @@ cp /tmp/BromiteWebViewInstaller/system/product/overlay/treble-overlay-bromite-we
 
 # Copy the OTA survival script to the appropriate location
 if [ -d /picodroid_system/system/addon.d ]
-    then cp /tmp/BromiteWebViewInstaller/system/addon.d/99-bromite-webview.sh /picodroid_system/system/addon.d
+    then cp /tmp/BromiteWebViewInstaller/system/addon.d/39-bromite-webview.sh /picodroid_system/system/addon.d
 fi
 
 # Make the script executable
-chmod 755 /picodroid_system/system/addon.d/99-bromite-webview.sh
+chmod 755 /picodroid_system/system/addon.d/39-bromite-webview.sh
 
 # Unmount the previously mounted partitions
 umount -l /picodroid_system
