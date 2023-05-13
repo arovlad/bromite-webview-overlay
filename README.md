@@ -56,11 +56,11 @@ To ensure that the package is installed for both profiles install the package vi
 * Mount the system as read-write:
 `adb shell mount -o rw,remount /`
 * Copy the OTA survival script to the appropriate location:
-`adb push 99-bromite-webview.sh /system/addon.d`
+`adb push 39-bromite-webview.sh /system/addon.d`
 * Make the script executable:
-`adb shell chmod 755 /system/addon.d/99-bromite-webview.sh`
+`adb shell chmod 755 /system/addon.d/39-bromite-webview.sh`
 * Verify if the correct permissions are set (optional):
-`adb shell stat /system/addon.d/99-bromite-webview.sh | grep "0755"`
+`adb shell stat /system/addon.d/39-bromite-webview.sh | grep "0755"`
 * After all the files have been copied, reboot the device:
 `adb reboot`
 * After rebooting you can verify if the overlay has been successfully installed (optional):
