@@ -34,7 +34,7 @@ If the above method doesn't work, try the [manual installation](#manual-installa
 
 For installing Mulch SystemWebView instead of Bromite SystemWebView, simply follow the steps above while downloading [the latest Mulch SystemWebView release](https://gitlab.com/divested-mobile/mulch/-/tree/master/prebuilt). The WebView can then be updated from F-Droid by adding [this repository](https://divestos.org/fdroid/official/).
 
-**Please be aware that by using Mulch SystemWebView you will be running proprietary/non-free code ([according to the website of the developer](https://divestos.org/pages/browsers#chromium-based)).**
+**Please be aware that by using Mulch SystemWebView you will be running some proprietary/non-free code ([according to the website of the developer](https://divestos.org/pages/browsers#chromium-based)).**
 
 ### Work Profile
 
