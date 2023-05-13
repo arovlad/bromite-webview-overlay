@@ -85,6 +85,7 @@ The following dependencies are required:
 * `xmlstarlet`
 * `apktool`
 * `zip`
+* `java`
 
 To build the overlay and the flashable package, simply run the build script:
 `./build.sh`
