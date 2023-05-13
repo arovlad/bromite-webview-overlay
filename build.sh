@@ -16,7 +16,7 @@ mkdir -p build/.temp/META-INF/com/google/android
 cp update-binary build/.temp/META-INF/com/google/android
 echo "# Dummy file; update-binary is a shell script." > build/.temp/META-INF/com/google/android/updater-script
 mkdir -p build/.temp/system/addon.d
-cp 99-bromite-webview.sh build/.temp/system/addon.d
+cp 39-bromite-webview.sh build/.temp/system/addon.d
 mkdir -p build/.temp/vendor/overlay
 cp build/treble-overlay-bromite-webview.apk build/.temp/vendor/overlay
 ( cd build/.temp && zip -r - . > ../BromiteSystemWebViewOverlay.zip . ) &> /dev/null
